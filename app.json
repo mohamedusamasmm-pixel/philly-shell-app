@@ -1,25 +1,54 @@
 {
   "expo": {
-    "name": "boxing-coach",
+    "name": "كابتن",
     "slug": "boxing-coach",
+    "scheme": "boxingcoach",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0C0A",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "app.coach.boxing",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
     },
     "android": {
+      "package": "app.coach.boxing",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#FFFFFF",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
+      "permissions": ["android.permission.SCHEDULE_EXACT_ALARM", "android.permission.POST_NOTIFICATIONS", "android.permission.VIBRATE", "android.permission.WAKE_LOCK"],
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      ["expo-audio", { "enableBackgroundPlayback": true, "microphonePermission": false }],
+      ["expo-localization", { "supportsRTL": false }],
+      "expo-sharing",
+      ["expo-notifications", {
+        "icon": "./assets/android-icon-monochrome.png",
+        "color": "#C6F432",
+        "sounds": ["./assets/bell.wav", "./assets/half.wav", "./assets/last10.wav", "./assets/bell_end.wav", "./assets/whistle.wav"]
+      }],
+      ["expo-image-picker", {
+        "photosPermission": "التطبيق محتاج الصور علشان تحط صورة اللاعب أو صورتك.",
+        "cameraPermission": "التطبيق محتاج الكاميرا علشان تصوّر اللاعب."
+      }],
+      ["expo-location", {
+        "locationWhenInUsePermission": "التطبيق محتاج مكانك علشان تحدد موقع النادي."
+      }],
+      "expo-dev-client"
+    ]
   }
 }
